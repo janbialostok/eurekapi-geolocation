@@ -3,7 +3,7 @@ const http = require('http');
 
 var GeoIP = function (options) {
 	this.ip = options.ip;
-	this.format = options.format || 'JSON';
+	this.format = (typeof options.format === 'string' && options.format.length) ? options.format.toUpperCase() : 'JSON';
 	this.requestUrl = `http://api.eurekapi.com/iplocation/v1.8/locateip?key=${ options.apikey }&ip=${ this.ip }&format=${ this.format }`;
 	this.logger = (typeof options.logger === 'object' && options.logger.warn) ? options.logger.warn : console.log;
 	this.timeout = options.timeout || 3000;
