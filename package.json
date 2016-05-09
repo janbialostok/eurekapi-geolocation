@@ -1,6 +1,6 @@
 {
   "name": "eurekapi-geolocation",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Nodejs wrapper for eurekapi.com ip geolocation service",
   "main": "index.js",
   "scripts": {

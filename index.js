@@ -38,7 +38,7 @@ var GeoIP = class GeoIP {
 	}
 	getLocationAsync () {
 		return new Promise((resolve, reject) => {
-			GeoIP.prototype.getLocation.call(this, (err, data) => {
+			this.getLocation.call(this, (err, data) => {
 				if (err) {
 					reject(err);
 				}
