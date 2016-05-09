@@ -1,7 +1,7 @@
 # eurekapi-geolocation
 A basic wrapper around eurekapi's ip geolocation api
 ### Version
-1.0.0
+2.0.1
 ### Installation
 Because eurekapi-geolocation uses native ES6 Promises and classes you must be running Node v4.2.4 or above
 ```sh
