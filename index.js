@@ -3,11 +3,15 @@ const http = require('http');
 
 var GeoIP = class GeoIP {
 	constructor (options) {
+		let apikey = options.apikey;
 		this.ip = options.ip;
 		this.format = (typeof options.format === 'string' && options.format.length) ? options.format.toUpperCase() : 'JSON';
-		this.requestUrl = `http://api.apigurus.com/iplocation/v1.8/locateip?key=${ options.apikey }&ip=${ this.ip }&format=${ this.format }`;
+		this.setRequestUrl = function () {
+			this.requestUrl = `http://api.apigurus.com/iplocation/v1.8/locateip?key=${ apikey }&ip=${ this.ip }&format=${ this.format }`;
+		};
 		this.logger = (typeof options.logger === 'object' && options.logger.warn) ? options.logger.warn : console.log;
 		this.timeout = options.timeout || 3000;
+		this.setRequestUrl();
 		return this;
 	}
 	getLocation (cb) {
@@ -50,6 +54,7 @@ var GeoIP = class GeoIP {
 	}
 	setIP (ip) {
 		this.ip = (typeof ip === 'string') ? ip : this.ip;
+		this.setRequestUrl();
 		return this;
 	}
 };
